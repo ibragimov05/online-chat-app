@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class CustomFunctions {
   static bool isAndroid() {
@@ -35,5 +37,16 @@ class CustomFunctions {
       return "Please, enter a valid email";
     }
     return null;
+  }
+ static int getRandomColorForUserProfile() {
+    List<Color> colors = [
+      Color(0xFF4B96D7),
+      Color(0xFF54B238),
+      Color(0xFFDB8538),
+      Color(0xFFD2635C),
+      Color(0xFF9F6DDE),
+      Color(0xFFd7458c),
+    ];
+    return colors[Random().nextInt(6)].value;
   }
 }

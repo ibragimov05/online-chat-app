@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:chat_app/utils/app_router.dart';
 import 'package:chat_app/utils/custom_functions.dart';
 import 'package:chat_app/utils/extensions/sized_box_extension.dart';
@@ -28,7 +30,9 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() => _isLoading = true);
       await _authController
           .loginUser(
-              email: _emailController.text, password: _passwordController.text)
+              email: _emailController.text,
+              password: _passwordController.text,
+              )
           .then((_) {
         Navigator.pushNamedAndRemoveUntil(
           context,
@@ -189,4 +193,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+
 }

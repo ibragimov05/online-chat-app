@@ -6,6 +6,7 @@ import 'package:chat_app/view_model/user_view_model.dart';
 import 'package:chat_app/views/screens/chat_screen/chat_screen.dart';
 import 'package:chat_app/views/screens/home_screen/widgets/chat_list_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
+                AuthController().logoutUser();
                 // Handle navigation to home
               },
             ),
@@ -97,7 +99,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 final CurrentUser user = CurrentUser.fromQuerySnapshot(
                   users[index],
                 );
-                return ChatListTile(user: user);
+                final data = [
+                  FirebaseAuth.instance.currentUser!.email,
+                  user.email
+                ]..sort();
+                return Column(
+                  children: [
+                    ChatListTile(user: user),
+                    SizedBox(
+                      height: 10,
+                      child: Divider(
+                        thickness: 0.3,
+                      ),
+                    ),
+                  ],
+                );
               },
             );
           }

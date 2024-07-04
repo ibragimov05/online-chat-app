@@ -12,11 +12,13 @@ class UserViewModel {
     required String name,
     required String email,
     required String uid,
+    required int colorValue,
   }) {
     _usersFirebaseService.addUser(
       name: name,
       email: email,
       uid: uid,
+      colorValue: colorValue,
     );
   }
 }

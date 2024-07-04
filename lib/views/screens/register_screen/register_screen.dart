@@ -1,3 +1,4 @@
+import 'package:chat_app/utils/custom_functions.dart';
 import 'package:chat_app/view_model/auth_view_model.dart';
 import 'package:chat_app/view_model/user_view_model.dart';
 import 'package:chat_app/views/widgets/custom_text_field.dart';
@@ -36,6 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             email: _emailController.text,
             name: 'eshmat',
             uid: FirebaseAuth.instance.currentUser!.uid,
+            colorValue: CustomFunctions.getRandomColorForUserProfile(),
           );
           Navigator.of(context).pop();
         },
