@@ -11,6 +11,7 @@ class ChatViewModel {
   void sendMessage({
     required String text,
     required String senderId,
+    required String imageUrl,
     required FieldValue timeStamp,
     required String chatRoomId,
   }) {
@@ -19,6 +20,7 @@ class ChatViewModel {
         'text': text,
         'sender-id': senderId,
         'time-stamp': timeStamp,
+        'image-url': imageUrl,
       },
       chatRoomId: chatRoomId,
     );

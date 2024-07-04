@@ -21,7 +21,7 @@ class CurrentUser {
       uid: query['user-uid'],
       name: query['user-name'],
       email: query['user-email'],
-      color: query['color-value'],
+      color: query['color-value'] ?? 0,
     );
   }
 }

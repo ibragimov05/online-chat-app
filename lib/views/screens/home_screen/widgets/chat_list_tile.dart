@@ -43,6 +43,7 @@ class ChatListTile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(user.email),
+                    Text('Message'),
                   ],
                 ),
               ],

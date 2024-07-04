@@ -38,7 +38,8 @@ class CustomFunctions {
     }
     return null;
   }
- static int getRandomColorForUserProfile() {
+
+  static int getRandomColorForUserProfile() {
     List<Color> colors = [
       Color(0xFF4B96D7),
       Color(0xFF54B238),

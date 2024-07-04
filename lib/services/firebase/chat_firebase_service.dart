@@ -19,4 +19,5 @@ class ChatFirebaseService {
   }) {
     _firestore.doc(chatRoomId).collection(_collectionName).add(data);
   }
+
 }

@@ -1,6 +1,7 @@
 import 'package:chat_app/utils/custom_functions.dart';
 import 'package:chat_app/view_model/auth_view_model.dart';
 import 'package:chat_app/view_model/user_view_model.dart';
+import 'package:chat_app/views/widgets/custom_circular_progress.dart';
 import 'package:chat_app/views/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -133,10 +134,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 20),
               Center(
                 child: GestureDetector(
-                  onTap: _onRegisterTap,
-                  child: const Text("Register"),
+                  onTap: !_isLoading ? _onRegisterTap : null,
+                  child: !_isLoading
+                      ? const Text("Register")
+                      : CustomCircularProgress(),
                 ),
-              ),
+              )
             ],
           ),
         ),
