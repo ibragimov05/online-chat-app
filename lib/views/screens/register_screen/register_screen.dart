@@ -1,4 +1,3 @@
-import 'package:chat_app/services/notification/firebase_push_notification_service.dart';
 import 'package:chat_app/utils/custom_functions.dart';
 import 'package:chat_app/view_model/auth_view_model.dart';
 import 'package:chat_app/view_model/user_view_model.dart';

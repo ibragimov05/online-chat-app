@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:chat_app/view_model/user_view_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -58,7 +57,7 @@ class FirebasePushNotificationService {
 
     client.close();
     if (response.statusCode == 200) {
-      print("SUCCESSFULLY SENT");
+      debugPrint("SUCCESSFULLY SENT");
     }
   }
 

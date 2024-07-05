@@ -1,5 +1,4 @@
 import 'package:chat_app/models/user_model.dart';
-import 'package:chat_app/services/notification/firebase_push_notification_service.dart';
 import 'package:chat_app/view_model/auth_view_model.dart';
 import 'package:chat_app/view_model/user_view_model.dart';
 import 'package:chat_app/views/screens/home_screen/widgets/chat_list_tile.dart';

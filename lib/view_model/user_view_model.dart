@@ -1,6 +1,5 @@
 import 'package:chat_app/services/firebase/users_firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class UserViewModel {
   final UsersFirebaseService _usersFirebaseService = UsersFirebaseService();

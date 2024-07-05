@@ -1,5 +1,4 @@
 import 'package:chat_app/utils/custom_functions.dart';
-import 'package:chat_app/views/screens/chat_screen/chat_screen.dart';
 import 'package:chat_app/views/screens/home_screen/home_screen.dart';
 import 'package:chat_app/views/screens/login_screen/login_screen.dart';
 import 'package:chat_app/views/screens/onboarding/onboarding_screen.dart';
