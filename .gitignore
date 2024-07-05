@@ -18,7 +18,7 @@ firebase.json
 # Ignore the google-services.json file
 android/app/google-services.json
 
-# Ignore service-accoun.json file
+# Ignore service-account.json file
 service-account.json
 
 migrate_working_dir/
