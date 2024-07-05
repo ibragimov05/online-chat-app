@@ -73,7 +73,8 @@ class _ChatScreenState extends State<ChatScreen> {
               Expanded(
                 child: StreamBuilder<QuerySnapshot>(
                   stream: _chatViewModel.getMessages(_chatRoomId),
-                  builder: (context, snapshot) {
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
                     if (!snapshot.hasData) {
                       return const Center(child: CircularProgressIndicator());
                     }
@@ -121,14 +122,12 @@ class _ChatScreenState extends State<ChatScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => ManageMedia(
-                                  chatRoomId: _chatRoomId,
-                                ),
-                              );
-                            },
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (context) => ManageMedia(
+                                chatRoomId: _chatRoomId,
+                              ),
+                            ),
                             child:
                                 SvgPicture.asset('assets/icons/paper_clip.svg'),
                           ),
