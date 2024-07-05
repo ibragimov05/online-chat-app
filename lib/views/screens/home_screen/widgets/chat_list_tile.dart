@@ -14,7 +14,7 @@ class ChatListTile extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         CupertinoPageRoute(
-          builder: (context) => ChatScreen(email: user.email),
+          builder: (context) => ChatScreen(curUser: user),
         ),
       ),
       child: Container(

@@ -1,5 +1,6 @@
 import 'package:chat_app/services/firebase/users_firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class UserViewModel {
   final UsersFirebaseService _usersFirebaseService = UsersFirebaseService();
@@ -9,13 +10,13 @@ class UserViewModel {
   }
 
   void addUser({
-    required String name,
+    required String userFCMToken,
     required String email,
     required String uid,
     required int colorValue,
   }) {
     _usersFirebaseService.addUser(
-      name: name,
+      userFCMToken: userFCMToken,
       email: email,
       uid: uid,
       colorValue: colorValue,

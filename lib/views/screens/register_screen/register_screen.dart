@@ -1,9 +1,11 @@
+import 'package:chat_app/services/notification/firebase_push_notification_service.dart';
 import 'package:chat_app/utils/custom_functions.dart';
 import 'package:chat_app/view_model/auth_view_model.dart';
 import 'package:chat_app/view_model/user_view_model.dart';
 import 'package:chat_app/views/widgets/custom_circular_progress.dart';
 import 'package:chat_app/views/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,12 +34,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
           .registerUser(
               email: _emailController.text, password: _passwordController.text)
           .then(
-        (value) {
+        (value) async {
           Navigator.of(context).pop();
+          // await Firebase
+          final String? userToken = await FirebaseMessaging.instance.getToken();
           _userViewModel.addUser(
             email: _emailController.text,
-            name: 'eshmat',
             uid: FirebaseAuth.instance.currentUser!.uid,
+            userFCMToken: userToken ?? 'null-token',
             colorValue: CustomFunctions.getRandomColorForUserProfile(),
           );
           Navigator.of(context).pop();
@@ -45,7 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ).catchError((error) {
         showDialog(
           context: context,
-          builder: (context) => AlertDialog(
+          builder: (BuildContext context) => AlertDialog(
             title: const Text('Error'),
             content: Text(error.toString()),
           ),

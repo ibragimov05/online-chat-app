@@ -1,4 +1,5 @@
 import 'package:chat_app/utils/custom_functions.dart';
+import 'package:chat_app/views/screens/chat_screen/chat_screen.dart';
 import 'package:chat_app/views/screens/home_screen/home_screen.dart';
 import 'package:chat_app/views/screens/login_screen/login_screen.dart';
 import 'package:chat_app/views/screens/onboarding/onboarding_screen.dart';
@@ -11,6 +12,7 @@ class AppRouter {
   static const String register = '/register';
   static const String home = '/home';
   static const String onboarding = '/onboarding';
+  static const String chat = '/chat';
 
   static PageRoute _buildPageRoute(Widget widget, bool isAndroid) {
     return isAndroid
@@ -29,6 +31,9 @@ class AppRouter {
         return _buildPageRoute(const HomeScreen(), isAndroid);
       case AppRouter.onboarding:
         return _buildPageRoute(const OnboardingScreen(), isAndroid);
+      // case AppRouter.chat:
+
+        // return _buildPageRoute(ChatScreen(email: 'email'), isAndroid);
       default:
         return _buildPageRoute(const OnboardingScreen(), isAndroid);
     }

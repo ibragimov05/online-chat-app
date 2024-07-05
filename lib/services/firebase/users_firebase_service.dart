@@ -8,13 +8,13 @@ class UsersFirebaseService {
   }
 
   void addUser({
-    required String name,
+    required String userFCMToken,
     required String email,
     required String uid,
     required int colorValue,
   }) {
     Map<String, dynamic> data = {
-      'user-name': name,
+      'user-fcm-token': userFCMToken,
       'user-email': email,
       'user-uid': uid,
       'color-value': colorValue,

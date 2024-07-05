@@ -18,6 +18,8 @@ firebase.json
 # Ignore the google-services.json file
 android/app/google-services.json
 
+service-account.json
+
 migrate_working_dir/
 
 # IntelliJ related

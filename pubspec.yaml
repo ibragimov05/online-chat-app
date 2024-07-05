@@ -44,6 +44,7 @@ dependencies:
   firebase_storage: ^12.1.0
   image_picker: ^1.1.2
   firebase_messaging: ^15.0.2
+  googleapis_auth: ^1.6.0
 
 
 dev_dependencies:
@@ -72,6 +73,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - service-account.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

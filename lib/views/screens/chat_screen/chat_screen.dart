@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:chat_app/models/message.dart';
+import 'package:chat_app/models/user_model.dart';
+import 'package:chat_app/services/notification/firebase_push_notification_service.dart';
 import 'package:chat_app/utils/custom_functions.dart';
 import 'package:chat_app/utils/extensions/sized_box_extension.dart';
 import 'package:chat_app/view_model/chat_view_model.dart';
@@ -12,9 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatScreen extends StatefulWidget {
-  final String email;
+  final CurrentUser curUser;
 
-  const ChatScreen({super.key, required this.email});
+  const ChatScreen({super.key, required this.curUser});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -31,7 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _chatRoomId = CustomFunctions.generateChatRoomId(
-      user1Email: widget.email,
+      user1Email: widget.curUser.email,
       user2Email: _currentUserEmail,
     );
   }
@@ -46,6 +48,11 @@ class _ChatScreenState extends State<ChatScreen> {
         imageUrl: '',
       );
       _messageController.clear();
+      FirebasePushNotificationService.sendNotificationMessage(
+        title: widget.curUser.email,
+        body: _messageController.text,
+        tokenFCM: widget.curUser.userFCMToken,
+      );
     }
   }
 
@@ -65,7 +72,10 @@ class _ChatScreenState extends State<ChatScreen> {
           appBar: AppBar(
             backgroundColor: const Color(0xFF517DA2),
             title: Column(
-              children: [Text(widget.email), const Text('Last seen recently')],
+              children: [
+                Text(widget.curUser.email),
+                const Text('Last seen recently')
+              ],
             ),
           ),
           body: Column(
