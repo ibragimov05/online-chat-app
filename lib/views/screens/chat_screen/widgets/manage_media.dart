@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:chat_app/services/firebase/chat_firebase_service.dart';
 import 'package:chat_app/services/firebase/firestore_firebase_service.dart';
 import 'package:chat_app/view_model/chat_view_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -117,7 +116,7 @@ class _ManageMediaState extends State<ManageMedia> {
               ),
               TextButton(
                 onPressed: _sendImage,
-                child: Text('Send'),
+                child: const Text('Send'),
               ),
             ]
           : [const CircularProgressIndicator()],

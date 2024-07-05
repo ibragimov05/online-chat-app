@@ -19,7 +19,7 @@ class ShowMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // width: MediaQuery.of(context).size.width - 40,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       margin: EdgeInsets.only(
         top: 5,
         bottom: 5,
@@ -27,12 +27,14 @@ class ShowMessage extends StatelessWidget {
         left: isSender ? 0 : 5,
       ),
       decoration: BoxDecoration(
-        color: isSender ? Color(0xFFEFFEDD) : Colors.white,
+        color: isSender ? const Color(0xFFEFFEDD) : Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8),
-          topRight: Radius.circular(8),
-          bottomLeft: isSender ? Radius.circular(8) : Radius.circular(0),
-          bottomRight: isSender ? Radius.circular(0) : Radius.circular(8),
+          topLeft: const Radius.circular(8),
+          topRight: const Radius.circular(8),
+          bottomLeft:
+              isSender ? const Radius.circular(8) : const Radius.circular(0),
+          bottomRight:
+              isSender ? const Radius.circular(0) : const Radius.circular(8),
         ),
       ),
       child: Column(
@@ -54,12 +56,14 @@ class ShowMessage extends StatelessWidget {
               Text(
                 _formatTime(timestamp),
                 style: TextStyle(
-                  color: isSender ? Color(0xFF899F74) : Color(0xFFBBBEBE),
+                  color: isSender
+                      ? const Color(0xFF899F74)
+                      : const Color(0xFFBBBEBE),
                   fontWeight: FontWeight.w500,
                 ),
               ),
               if (isSender)
-                Icon(
+                const Icon(
                   Icons.check,
                   size: 15,
                   color: Color(0xFF899F74),

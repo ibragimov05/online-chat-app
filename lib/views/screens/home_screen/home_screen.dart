@@ -1,13 +1,9 @@
 import 'package:chat_app/models/user_model.dart';
-import 'package:chat_app/services/auth/firebase_auth_service.dart';
-import 'package:chat_app/utils/app_router.dart';
 import 'package:chat_app/view_model/auth_view_model.dart';
 import 'package:chat_app/view_model/user_view_model.dart';
-import 'package:chat_app/views/screens/chat_screen/chat_screen.dart';
 import 'package:chat_app/views/screens/home_screen/widgets/chat_list_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,50 +30,47 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+      drawer: ClipRRect(
+        borderRadius: BorderRadius.zero,
+        child: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: const BoxDecoration(color: Color(0xFF5A8FBB)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      FirebaseAuth.instance.currentUser!.displayName ??
+                          'Unknown',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      FirebaseAuth.instance.currentUser!.email ?? 'Unknown',
+                      style: const TextStyle(
+                        color: Color(0xFFB1DDFE),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                AuthController().logoutUser();
-                // Handle navigation to home
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: () {
-                // Handle navigation to profile
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                // Handle navigation to settings
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () {
-                // Handle logout
-              },
-            ),
-          ],
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text('Logout'),
+                onTap: () {
+                  AuthController().logoutUser();
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: StreamBuilder(
@@ -97,14 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 final CurrentUser user = CurrentUser.fromQuerySnapshot(
                   users[index],
                 );
-                final data = [
-                  FirebaseAuth.instance.currentUser!.email,
-                  user.email
-                ]..sort();
                 return Column(
                   children: [
                     ChatListTile(user: user),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                       child: Divider(
                         thickness: 0.3,

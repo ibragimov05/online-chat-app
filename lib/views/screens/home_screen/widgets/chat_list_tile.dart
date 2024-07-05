@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:chat_app/models/user_model.dart';
 import 'package:chat_app/views/screens/chat_screen/chat_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,7 +41,7 @@ class ChatListTile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(user.email),
-                    Text('Message'),
+                    const Text('Message'),
                   ],
                 ),
               ],

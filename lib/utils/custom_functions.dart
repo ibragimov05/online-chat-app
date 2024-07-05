@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 class CustomFunctions {
   static bool isAndroid() {
-    return false;
     if (kIsWeb) {
       return false;
     } else if (Platform.isAndroid) {
@@ -41,12 +40,12 @@ class CustomFunctions {
 
   static int getRandomColorForUserProfile() {
     List<Color> colors = [
-      Color(0xFF4B96D7),
-      Color(0xFF54B238),
-      Color(0xFFDB8538),
-      Color(0xFFD2635C),
-      Color(0xFF9F6DDE),
-      Color(0xFFd7458c),
+      const Color(0xFF4B96D7),
+      const Color(0xFF54B238),
+      const Color(0xFFDB8538),
+      const Color(0xFFD2635C),
+      const Color(0xFF9F6DDE),
+      const Color(0xFFd7458c),
     ];
     return colors[Random().nextInt(6)].value;
   }

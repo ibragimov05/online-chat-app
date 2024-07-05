@@ -10,7 +10,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ChatScreen extends StatefulWidget {
   final String email;
@@ -63,7 +62,12 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(title: Text('Chat with ${widget.email}')),
+          appBar: AppBar(
+            backgroundColor: const Color(0xFF517DA2),
+            title: Column(
+              children: [Text(widget.email), const Text('Last seen recently')],
+            ),
+          ),
           body: Column(
             children: [
               Expanded(

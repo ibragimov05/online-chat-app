@@ -69,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () => Navigator.of(context).pop(),
-          child: Icon(Icons.arrow_back_ios_new),
+          child: const Icon(Icons.arrow_back_ios_new),
         ),
       ),
       body: Padding(
@@ -137,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onTap: !_isLoading ? _onRegisterTap : null,
                   child: !_isLoading
                       ? const Text("Register")
-                      : CustomCircularProgress(),
+                      : const CustomCircularProgress(),
                 ),
               )
             ],
